@@ -1,0 +1,23 @@
+-- Query 1: Sab data dekho
+SELECT * FROM "Super store"
+
+-- Query 2: Sirf kuch columns
+SELECT City, Sales, Profit FROM "Super store"
+
+-- Query 3: Henderson filter
+SELECT City, Sales, Profit FROM "Super store" WHERE City = "Henderson"
+
+-- Query 4: Sales 1000 se upar
+SELECT City, Sales, Profit FROM "Super store" WHERE Sales > 1000
+
+-- Query 5: City wise total sales
+SELECT City, SUM(Sales) FROM "Super store" GROUP BY City ORDER BY SUM(Sales) DESC LIMIT 10
+
+Query 6: SELECT COUNT(*) FROM "Super store"
+
+Query 7: SELECT City, SUM(Sales) FROM "Super store" 
+GROUP BY City HAVING SUM(Sales) > 50000 ORDER BY SUM(Sales) DESC
+
+Query 8 SELECT Category, AVG(Sales) AS Average_Sales FROM [Super store] GROUP BY Category
+
+Query 9 SELECT Customers.CustomerName, Customers.City, Orders.Product, Orders.Amount FROM Customers JOIN Orders ON Customers.CustomerID = Orders.CustomerID

@@ -1,0 +1,34 @@
+================================
+SQL PORTFOLIO - SUPER STORE DATA
+================================
+
+Query 1: Top 10 Cities by Sales
+--------------------------------
+SELECT City, SUM(Sales) FROM "Super store" 
+GROUP BY City 
+ORDER BY SUM(Sales) DESC 
+LIMIT 10
+
+Result: New York City highest sale - 256,319
+        Los Angeles - 175,831
+        Seattle - 119,460
+
+Query 2: Category wise Profit
+--------------------------------
+SELECT Category, SUM(Profit) AS Total_Profit 
+FROM "Super store" 
+GROUP BY Category 
+HAVING SUM(Profit) > 50000
+
+Result: Technology - 145,454
+        Office Supplies - 122,364
+
+Query 3: Average Sales by Category
+--------------------------------
+SELECT Category, AVG(Sales) AS Average_Sales 
+FROM "Super store" 
+GROUP BY Category
+
+Result: Technology average - 452
+        Furniture average - 350
+        Office Supplies average - 119
