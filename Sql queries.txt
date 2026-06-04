@@ -21,3 +21,19 @@ GROUP BY City HAVING SUM(Sales) > 50000 ORDER BY SUM(Sales) DESC
 Query 8 SELECT Category, AVG(Sales) AS Average_Sales FROM [Super store] GROUP BY Category
 
 Query 9 SELECT Customers.CustomerName, Customers.City, Orders.Product, Orders.Amount FROM Customers JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+-- ADVANCED SQL --
+
+-- CASE WHEN
+SELECT City, Sales, CASE WHEN Sales > 1000 THEN 'High' WHEN Sales > 500 THEN 'Medium'
+ELSE 'Low' END AS Sales_Category FROM "Super store" LIMIT 20
+
+-- SUBQUERY
+SELECT City, Sales FROM "Super store" WHERE Sales > (SELECT AVG(Sales) FROM "Super store")
+ORDER BY Sales DESC LIMIT 10
+
+-- RANK Window Function
+SELECT City, SUM(Sales) AS Total_Sales, RANK() OVER (ORDER BY SUM(Sales) DESC) AS City_Rank
+FROM "Super store" GROUP BY City LIMIT 10
+
+-- STRING FUNCTIONS
+SELECT UPPER(City), LOWER(City), LENGTH(City) FROM "Super store" LIMIT 10
